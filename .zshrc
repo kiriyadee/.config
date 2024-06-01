@@ -25,15 +25,6 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 # NOTE: We use `command` and not `builtin` because the latter doesn't take into
 # account anything available on the user's $PATH but also because it didn't
 # work with the Starship prompt which seems to override cd also.
-function cd {
-  command cd "$@"
-  RET=$?
-  ls
-  go_version
-  return $RET
-}
-
-# configure go environment
 #
 # Custom go binaries are installed in $HOME/go/bin.
 #
@@ -94,8 +85,8 @@ fi
 if ! ls ~/.cargo/bin | grep 'cargo-upgrade' &> /dev/null; then
   cargo install cargo-edit
 fi
-
 # If you come from bash you might have to change your $PATH.
+#
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
