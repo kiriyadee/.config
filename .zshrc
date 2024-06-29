@@ -1,7 +1,12 @@
 export PATH="/usr/local/go/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-
 source "$HOME/.cargo/env"
+
+export PNPM_HOME="/home/chanth/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
 FNM_PATH="/home/enwuft/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/enwuft/.local/share/fnm:$PATH"
